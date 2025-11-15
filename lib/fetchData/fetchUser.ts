@@ -6,7 +6,8 @@ export function useLogout(): () => Promise<void> {
 
   return async function logout() {
     try {
-      const res = await fetch("/api/user/logout", { method: "POST" });
+      const baseURL = process.env.NEXT_PUBLIC_BASE_URL || "";
+      const res = await fetch(`${baseURL}/api/user/logout`, { method: "POST" });
       const data = await res.json();
 
       if (!res.ok) {
@@ -29,7 +30,8 @@ export function useLogin(): (values: { email: string; password: string }) => Pro
 
   return async function login(values: { email: string; password: string }) {
     try {
-      const res = await fetch("/api/user/login", {
+      const baseURL = process.env.NEXT_PUBLIC_BASE_URL || "";
+      const res = await fetch(`${baseURL}/api/user/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -59,7 +61,8 @@ export function useSignUp(): (values: { email: string; password: string; name: s
 
   return async function signup(values: { email: string; password: string; name: string , isAdmin: boolean }) {
     try {
-      const res = await fetch("/api/user/signup", {
+      const baseURL = process.env.NEXT_PUBLIC_BASE_URL || "";
+      const res = await fetch(`${baseURL}/api/user/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
