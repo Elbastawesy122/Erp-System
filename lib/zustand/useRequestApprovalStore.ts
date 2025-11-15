@@ -13,7 +13,7 @@ interface RequestApprovalState {
 export const useRequestApprovalStore = create<RequestApprovalState>(() => ({
   approveRequest: async (id) => {
     try {
-      const res = await fetch(`/api/requests/${id}/transactions`, {
+      const res = await fetch(`https://erp-system-beta-ecru.vercel.app/api/requests/${id}/transactions`, {
         method: "PUT",
       });
 
@@ -35,7 +35,7 @@ export const useRequestApprovalStore = create<RequestApprovalState>(() => ({
 
   acceptOrder: async (id) => {
     try {
-      const res = await fetch(`/api/orders/${id}/transactions`, {
+      const res = await fetch(`https://erp-system-beta-ecru.vercel.app/api/orders/${id}/transactions`, {
         method: "PUT",
       });
 

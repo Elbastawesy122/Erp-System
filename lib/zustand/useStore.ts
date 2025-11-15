@@ -25,7 +25,7 @@ export const useStore = create<Store>((set, get) => ({
   fetchProducts: async () => {
     set({ loading: true, error: null });
     try {
-      const response = await fetch(`/api/store`, { cache: "no-store" });
+      const response = await fetch(`https://erp-system-beta-ecru.vercel.app/api/store`, { cache: "no-store" });
       if (!response.ok) throw new Error("Failed to fetch store products");
 
       const data = await response.json();
@@ -61,7 +61,7 @@ export const useStore = create<Store>((set, get) => ({
   updateProduct: async (products: storeRequest[]) => {
     set({ loading: true, error: null });
     try {
-      const response = await fetch(`/api/store`, {
+      const response = await fetch(`https://erp-system-beta-ecru.vercel.app/api/store`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ products }),
@@ -81,7 +81,7 @@ export const useStore = create<Store>((set, get) => ({
 
   deleteStore: async (id: number | undefined) => {
     try {
-      const res = await fetch(`/api/store/${id}`, {
+      const res = await fetch(`https://erp-system-beta-ecru.vercel.app/api/store/${id}`, {
         method: "DELETE",
         credentials: "include",
         cache: "no-store",

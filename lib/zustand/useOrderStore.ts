@@ -31,7 +31,7 @@ export const useOrderStore = create<OrderStore>((set, get) => ({
         `?page=${page}` +
         (status ? `&status=${status}` : "") +
         (progress ? `&progress=${progress}` : "");
-      const res = await fetch(`/api/orders${query}`);
+      const res = await fetch(`https://erp-system-beta-ecru.vercel.app/api/orders${query}`);
       const data = await res.json();
 
       if (!res.ok) {
@@ -54,7 +54,7 @@ export const useOrderStore = create<OrderStore>((set, get) => ({
     request: Partial<orderRequest>
   ): Promise<{ success: boolean; message: string }> => {
     try {
-      const response = await fetch(`/api/orders/${id}`, {
+      const response = await fetch(`https://erp-system-beta-ecru.vercel.app/api/orders/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(request),
@@ -81,7 +81,7 @@ export const useOrderStore = create<OrderStore>((set, get) => ({
 
   deleteOrder: async (orderId: number | undefined) => {
     try {
-      const res = await fetch(`/api/orders/${orderId}`, {
+      const res = await fetch(`https://erp-system-beta-ecru.vercel.app/api/orders/${orderId}`, {
         method: "DELETE",
         credentials: "include",
       });

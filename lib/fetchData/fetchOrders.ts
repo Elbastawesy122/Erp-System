@@ -7,7 +7,7 @@ export function useOrder(): (orderData: orderRequest) => Promise<void> {
 
   return async function createOrder(orderData) {
     try {
-      const res = await fetch("/api/orders", {
+      const res = await fetch("https://erp-system-beta-ecru.vercel.app/api/orders", {
         method: "POST",
         credentials: "include",
         headers: {
