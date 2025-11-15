@@ -1,0 +1,39 @@
+"use client";
+
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
+import { useIsMobile } from "@/hooks/use-mobile";
+
+export function StatusMenuDemo({ tabs }: { tabs: string[] }) {
+  const isMobile = useIsMobile();
+  return (
+    <NavigationMenu viewport={isMobile} className="w-full">
+      <NavigationMenuList className="flex-wrap w-full">
+        <NavigationMenuItem className="block w-full">
+          <NavigationMenuTrigger className="cursor-pointer w-full">
+            Filter by
+          </NavigationMenuTrigger>
+          <NavigationMenuContent className="w-full min-w-[200px] ">
+            <ul className="grid w-full gap-2">
+              {tabs.map((tab, i) => (
+                <li key={i} className="w-full">
+                  <NavigationMenuLink asChild>
+                    <h3 className="block w-full text-left px-4 py-2 hover:bg-gray-100 cursor-pointer">
+                      {tab}
+                    </h3>
+                  </NavigationMenuLink>
+                </li>
+              ))}
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+      </NavigationMenuList>
+    </NavigationMenu>
+  );
+}
