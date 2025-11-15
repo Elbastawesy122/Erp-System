@@ -6,7 +6,7 @@ export function useLogout(): () => Promise<void> {
 
   return async function logout() {
     try {
-      const res = await fetch("https://erp-system-beta-ecru.vercel.app/api/user/logout", { method: "POST" });
+      const res = await fetch("/api/user/logout", { method: "POST" });
       const data = await res.json();
 
       if (!res.ok) {
@@ -29,7 +29,7 @@ export function useLogin(): (values: { email: string; password: string }) => Pro
 
   return async function login(values: { email: string; password: string }) {
     try {
-      const res = await fetch("https://erp-system-beta-ecru.vercel.app/api/user/login", {
+      const res = await fetch("/api/user/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
