@@ -32,7 +32,7 @@ export const useRequestStore = create<RequestState>((set, get) => ({
     request: requestRequest
   ): Promise<{ success: boolean; message: string }> => {
     try {
-      const response = await fetch("https://erp-system-beta-ecru.vercel.app/api/requests", {
+      const response = await fetch("/api/requests", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(request),
@@ -61,7 +61,7 @@ export const useRequestStore = create<RequestState>((set, get) => ({
   getRequests: async (page = 1, status?: string) => {
     try {
       const query = `?page=${page}` + (status ? `&status=${status}` : "");
-      const response = await fetch(`https://erp-system-beta-ecru.vercel.app/api/requests${query}`, {
+      const response = await fetch(`/api/requests${query}`, {
         cache: "no-store",
       });
       const data = await response.json();
@@ -83,7 +83,7 @@ export const useRequestStore = create<RequestState>((set, get) => ({
     request: Partial<requestRequest>
   ): Promise<{ success: boolean; message: string }> => {
     try {
-      const response = await fetch(`https://erp-system-beta-ecru.vercel.app/api/requests/${id}`, {
+      const response = await fetch(`/api/requests/${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(request),
@@ -112,7 +112,7 @@ export const useRequestStore = create<RequestState>((set, get) => ({
     id: number
   ): Promise<{ success: boolean; message: string }> => {
     try {
-      const response = await fetch(`https://erp-system-beta-ecru.vercel.app/api/requests/${id}`, {
+      const response = await fetch(`/api/requests/${id}`, {
         method: "DELETE",
       });
       const data = await response.json();

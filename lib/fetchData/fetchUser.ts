@@ -59,7 +59,7 @@ export function useSignUp(): (values: { email: string; password: string; name: s
 
   return async function signup(values: { email: string; password: string; name: string , isAdmin: boolean }) {
     try {
-      const res = await fetch("https://erp-system-beta-ecru.vercel.app/api/user/signup", {
+      const res = await fetch("/api/user/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

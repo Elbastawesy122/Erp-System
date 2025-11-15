@@ -10,7 +10,7 @@ export const useChartData = create<chartDatatype>((set) => ({
   chartData: [],
   getchartdata: async () => {
     try {
-      const res = await fetch(`https://erp-system-beta-ecru.vercel.app/api/orders/chart`, { cache: "no-store" });
+      const res = await fetch(`/api/orders/chart`, { cache: "no-store" });
       const data = await res.json();
 
       if (!res.ok) {

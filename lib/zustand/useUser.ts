@@ -18,7 +18,7 @@ export const useUser = create<Store>((set) => ({
 
   getUser: async () => {
     try {
-      const response = await fetch(`https://erp-system-beta-ecru.vercel.app/api/user`, { cache: "no-store" });
+      const response = await fetch(`/api/user`, { cache: "no-store" });
       if (!response.ok) throw new Error("Failed to fetch user");
 
       const data = await response.json();
